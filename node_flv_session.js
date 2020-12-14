@@ -111,9 +111,10 @@ class NodeFlvSession {
     Logger.log(`[${this.TAG} reject] id=${this.id}`);
     this.stop();
   }
+  
 
-  onPlay() {
-    context.nodeEvent.emit("prePlay", this.id, this.playStreamPath, this.playArgs);
+  async onPlay() {
+    await context.nodeEvent.emit("prePlay", this.id, this.playStreamPath, this.playArgs);
     if (!this.isStarting) {
       return;
     }
